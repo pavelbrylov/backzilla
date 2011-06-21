@@ -8,7 +8,6 @@ require 'pathname'
 if RUBY_VERSION < "1.9"
   require 'rubygems'
 end
-require 'ruby-debug'
 
 require 'open4'
 
