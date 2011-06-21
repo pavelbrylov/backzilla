@@ -2,10 +2,10 @@ class Backzilla::Duplicity
   include Backzilla::Executor
   include Backzilla::LoggerHelper
  
-  def initialize(source, target)
+  def initialize(source, target, options = nil)
     @source = source
     @target = target
-    @options = "--force "
+    @options = options.to_s << " --force "
     @env_options = ""
   end
   

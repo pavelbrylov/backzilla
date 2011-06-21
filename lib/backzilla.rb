@@ -8,6 +8,7 @@ require 'pathname'
 if RUBY_VERSION < "1.9"
   require 'rubygems'
 end
+require 'ruby-debug'
 
 require 'open4'
 
@@ -80,7 +81,7 @@ module Backzilla
         projects << project
       end
       klass = Backzilla::Action.const_get(config.action)
-      projects.each { |project| klass.new(project.entities, stores).run }
+      projects.each { |project| klass.new(project.entities, stores, config.params).run }
     else
       spec_parts = config.spec.split(':')
       project_name = spec_parts.shift

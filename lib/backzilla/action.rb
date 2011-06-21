@@ -5,8 +5,9 @@ module Backzilla::Action
   
   include Backzilla::LoggerHelper 
 
-  def initialize(entities, stores)
+  def initialize(entities, stores, params)
     @entities = entities
     @stores = stores
+    @params = params
   end
 end 

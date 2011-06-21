@@ -8,6 +8,7 @@ require 'optparse'
 options = {}
 options[:quiet] = false
 options[:debug] = false
+options[:params] = {}
 
 OptionParser.new do |cmd_options|
   cmd_options.banner = "Usage: backzilla.rb [OPTIONS]"
@@ -21,6 +22,13 @@ OptionParser.new do |cmd_options|
     options[:backup] = true
     options[:spec] = spec
     options[:action] = "Backup"
+  end
+
+  cmd_options.on("-f", "--fullbackup PROJECT_SPEC", "Fully backups PROJECT_SPEC") do |spec|
+    options[:backup] = true
+    options[:spec] = spec
+    options[:action] = "Backup"
+    options[:params] = {:full => true}
   end
 
   cmd_options.on("-r", "--restore PROJECT_SPEC", "Restores PROJECT_SPEC") do |spec|
